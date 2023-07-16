@@ -1,0 +1,92 @@
+@font-face {
+    font-weight: 400;
+    font-family: stratosskyeng;
+    src: url(./fonts/Web\ fonts/stratosskyengweb-regular.woff);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    background-color: #004980;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.level-choose-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #C2F5FF;
+    width: 480px;
+    height: 459px;
+    border-radius: 12px;
+}
+
+.level-choose-text {
+    width: 202px;
+    text-align: center;
+    color: #004980;
+    margin-top: 52px;
+    font-family: stratosskyeng;
+    font-weight: 400;
+    font-size: 40px;
+}
+
+.levels {
+    display: flex;
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.levels_number {
+    background-color: white;
+    width: 98px;
+    height: 98px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: #0080C1;
+    border: none;
+    font-family: stratosskyeng;
+    font-weight: 400;
+    font-size: 64px;
+    transition: .2s;
+}
+
+.levels_number:hover {
+    scale: 1.1;
+    background-color: #7AC100;
+    color: white;
+}
+
+.levels_number:active {
+    scale: 0.9;
+}
+
+.start-button {
+    width: 256px;
+    height: 50px;
+    border-radius: 12px;
+    border: none;
+    background-color: #7AC100;
+    color: white;
+    margin-top: 67px;
+    font-family: stratosskyeng;
+    font-weight: 400;
+    font-size: 24px;
+    transition: .2s;
+}
+
+.start-button:hover {
+    background-color: #004980;
+}
+
+.start-button:active {
+    scale: 0.9;
+}
