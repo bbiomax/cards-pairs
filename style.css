@@ -69,6 +69,12 @@
     scale: 0.9;
 }
 
+.level_choosed {
+    scale: 1.1;
+    background-color: #7AC100;
+    color: white;
+}
+
 .radio-button {
     display: none;
 }
