@@ -69,6 +69,10 @@
     scale: 0.9;
 }
 
+.radio-button {
+    display: none;
+}
+
 .start-button {
     width: 256px;
     height: 50px;
