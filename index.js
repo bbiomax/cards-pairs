@@ -4,7 +4,6 @@ let gameLevel;
 const startButton = document.querySelector('.start-button');
 
 startButton.addEventListener('click', () => {
-
     for (let index = 0; index < radios.length; index++) {
         if (radios[index].checked) {
             gameLevel = radios[index].value;
@@ -21,4 +20,4 @@ startButton.addEventListener('click', () => {
     } else if (gameLevel === 'Третий уровень') {
         window.location = './level.html';
     }
-})
+});
