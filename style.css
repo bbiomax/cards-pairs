@@ -43,8 +43,16 @@
     margin-top: 48px;
 }
 
-.levels_number {
-    background-color: white;
+.form_radio_btn {
+	display: inline-block;
+}
+
+.form_radio_btn input[type=radio] {
+	display: none;
+}
+
+.form_radio_btn label {
+	background-color: white;
     width: 98px;
     height: 98px;
     display: flex;
@@ -57,20 +65,19 @@
     font-weight: 400;
     font-size: 64px;
     transition: .2s;
+	user-select: none;
 }
 
-.levels_number:hover {
-    scale: 1.1;
+.form_radio_btn input[type=radio]:checked + label {
+	scale: 1.1;
     background-color: #7AC100;
     color: white;
 }
 
-.levels_number:active {
-    scale: 0.9;
-}
-
-.radio-button {
-    display: none;
+.form_radio_btn label:hover {
+	scale: 1.1;
+    background-color: #7AC100;
+    color: white;
 }
 
 .start-button {
