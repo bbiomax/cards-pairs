@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/bbiomax/cards-pairs#readme",
   "devDependencies": {
-    "axios": "^1.4.0",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^5.0.0",
