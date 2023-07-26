@@ -101,3 +101,68 @@
 .start-button:active {
     scale: 0.9;
 }
+
+/* Верстка уровня */
+
+.container-level {
+    background-color: #004980;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    width: 975px;
+    height: 91px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 35px;
+}
+
+.stopwatch-minsek {
+    position: absolute;
+    width: 150px;
+    font-size: 16px;
+    display: flex;
+    justify-content: end;
+    gap: 57px;
+}
+
+.stopwatch-time {
+    font-size: 64px;
+    padding-top: 10px;
+}
+
+.restart-button {
+    width: 256px;
+    height: 50px;
+    border-radius: 12px;
+    border: none;
+    background-color: #7ac100;
+    color: white;
+    font-weight: 400;
+    font-size: 24px;
+    transition: 0.1s;
+}
+
+.restart-button:hover {
+    background-color: #a0df34;
+}
+
+.cards-box {
+    width: 975px;
+    height: 577px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.card {
+    background-image: url('./img/рубашка.png');
+    width: 95px;
+    height: 133px;
+}
