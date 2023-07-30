@@ -1,9 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+// const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: './index.js',
+    mode: 'development',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -11,7 +13,7 @@ module.exports = {
     },
     module: {
         rules: [
-            { text: /\.css$/, user: ['style-loader', 'css-loader'] },
+            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
@@ -30,7 +32,12 @@ module.exports = {
             template: './index.html',
         }),
         new HtmlWebpackPlugin({
+            filename: 'level.html',
             template: './level.html',
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'level-open.html',
+            template: './level-open.html',
         }),
     ],
 };

@@ -32,7 +32,7 @@
     text-align: center;
     color: #004980;
     margin-top: 52px;
-    font-family: var(--stratosskyeng);
+    font-family: stratosskyeng, sans-serif;
     font-weight: 400;
     font-size: 40px;
 }
@@ -61,7 +61,7 @@
     border-radius: 12px;
     color: #0080c1;
     border: none;
-    font-family: var(--stratosskyeng);
+    font-family: stratosskyeng, sans-serif;
     font-weight: 400;
     font-size: 64px;
     transition: 0.2s;
@@ -88,7 +88,7 @@
     background-color: #7ac100;
     color: white;
     margin-top: 67px;
-    font-family: var(--stratosskyeng);
+    font-family: stratosskyeng, sans-serif;
     font-weight: 400;
     font-size: 24px;
     transition: 0.2s;
