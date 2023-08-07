@@ -25,10 +25,12 @@
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^5.0.0",
     "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^3.0.0",
     "stylelint": "^15.10.2",
     "stylelint-config-standard": "^34.0.0",
