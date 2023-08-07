@@ -1,5 +1,3 @@
-// import './static/style.css';
-
 let radios = document.querySelectorAll('.radio-button');
 let gameLevel;
 
