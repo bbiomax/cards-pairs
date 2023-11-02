@@ -1,10 +1,9 @@
-import { renderLevel } from './gameLevel.js';
+import { renderFirstLevel, renderSecondLevel, renderThirdLevel } from './gameLevel.js';
 
 let gameLevel;
+export const gameEl = document.getElementById('container');
 
 const renderChooseLevel = () => {
-    const gameEl = document.getElementById('container');
-
     const gameHtml = `<div class="level-choose-box">
     <h2 class="level-choose-text">Выбери сложность</h2>
     <div class="levels">
@@ -43,17 +42,11 @@ const renderChooseLevel = () => {
         console.log(gameLevel);
 
         if (gameLevel === 'Первый уровень') {
-            renderLevel({
-                gameEl,
-            });
+            renderFirstLevel();
         } else if (gameLevel === 'Второй уровень') {
-            renderLevel({
-                gameEl,
-            });
+            renderSecondLevel();
         } else if (gameLevel === 'Третий уровень') {
-            renderLevel({
-                gameEl,
-            });
+            renderThirdLevel();
         }
     });
 };
