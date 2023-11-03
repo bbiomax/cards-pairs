@@ -54,6 +54,10 @@ export const renderFirstLevel = () => {
     
             checkForMatch();
         }
+
+        if (Array.from(cards).every(cards => cards.className.includes('flip'))) {
+            alert('Вы выиграли!');
+        }
     }
 
     function checkForMatch() {
@@ -102,23 +106,6 @@ export const renderFirstLevel = () => {
     })();
 
     cards.forEach((card) => card.addEventListener('click', flipCard));
-
-    // function checkForWIn(cards) {
-    //     for (let i = 0; i < cardObject.length; i++) {
-    //         if (!cardObject[i].classList.contains('flip')) {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // } 
-
-    // if (checkAllCardsFlipped(cards)) {
-    //     alert('Вы выиграли!');
-    // } 
-
-    if (Array.from(cards).every(cards => cards.className.includes('flip'))) {
-        alert('Вы выиграли!');
-    }
 };
 
 export const renderSecondLevel = () => {
@@ -173,6 +160,10 @@ export const renderSecondLevel = () => {
             secondCard = this;
     
             checkForMatch();
+        }
+
+        if (Array.from(cards).every(cards => cards.className.includes('flip'))) {
+            alert('Вы выиграли!');
         }
     }
 
@@ -276,6 +267,10 @@ export const renderThirdLevel = () => {
             secondCard = this;
     
             checkForMatch();
+        }
+
+        if (Array.from(cards).every(cards => cards.className.includes('flip'))) {
+            alert('Вы выиграли!');
         }
     }
 
