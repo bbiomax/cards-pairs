@@ -37,10 +37,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html',
         }),
-        new HtmlWebpackPlugin({
-            filename: 'level-open.html',
-            template: './level-open.html',
-        }),
         new MiniCssExtractPlugin(),
     ],
     optimization: {
