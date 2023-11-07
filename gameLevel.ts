@@ -19,7 +19,9 @@ export const renderFirstLevel = () => {
         <img src="./static/img/backSide/backSide.png" alt="" class="back-face">
     </div>`;
 
-    gameEl.innerHTML = gameHtml;
+    if (gameEl) {
+        gameEl.innerHTML = gameHtml;
+    }
 
     const gameContainer = document.querySelector('.cards-box');
     
@@ -29,7 +31,9 @@ export const renderFirstLevel = () => {
         <img src="${card.srcBack}" alt="" class="back-face">
     </div>`).join('');
 
-    gameContainer.innerHTML = cardsHtml;
+    if (gameContainer) {
+        gameContainer.innerHTML = cardsHtml;
+    }
 
     const cards = document.querySelectorAll('.memory-card');
 
@@ -126,7 +130,9 @@ export const renderSecondLevel = () => {
         <img src="./static/img/backSide/backSide.png" alt="" class="back-face">
     </div>`;
 
-    gameEl.innerHTML = gameHtml;
+    if (gameEl) {
+        gameEl.innerHTML = gameHtml;
+    }
 
     const gameContainer = document.querySelector('.cards-box');
     
@@ -136,7 +142,9 @@ export const renderSecondLevel = () => {
         <img src="${card.srcBack}" alt="" class="back-face">
     </div>`).join('');
 
-    gameContainer.innerHTML = cardsHtml;
+    if (gameContainer) {
+        gameContainer.innerHTML = cardsHtml;
+    }
 
     const cards = document.querySelectorAll('.memory-card');
 
@@ -233,7 +241,9 @@ export const renderThirdLevel = () => {
         <img src="./static/img/backSide/backSide.png" alt="" class="back-face">
     </div>`;
 
-    gameEl.innerHTML = gameHtml;
+    if (gameEl) {
+        gameEl.innerHTML = gameHtml;
+    }
 
     const gameContainer = document.querySelector('.cards-box');
     
@@ -243,7 +253,9 @@ export const renderThirdLevel = () => {
         <img src="${card.srcBack}" alt="" class="back-face">
     </div>`).join('');
 
-    gameContainer.innerHTML = cardsHtml;
+    if (gameContainer) {
+        gameContainer.innerHTML = cardsHtml;
+    }
 
     const cards = document.querySelectorAll('.memory-card');
 

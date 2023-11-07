@@ -181,8 +181,8 @@ const AllCards = [
     },
 ]
 
-export function getRandomCardsArray(quantityCards) {
-    let sixCardsArray = [];
+export function getRandomCardsArray(quantityCards: number) {
+    let sixCardsArray: Array<object> = [];
     for (let i = 0; i < quantityCards; i++) {
         while (sixCardsArray.length < quantityCards*2) {
             let randomCard = getRandomCard(AllCards);
@@ -197,11 +197,11 @@ export function getRandomCardsArray(quantityCards) {
     return sixCardsArray;
 }
 
-function getRandomCard(arr) {
+function getRandomCard(arr: Array<object>) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function dublicateCards(card, n) {
+function dublicateCards(card: object, n: number) {
     let newArray = [];
     for (let i = 0; i < n; i++) {
         newArray.push(card);

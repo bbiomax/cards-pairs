@@ -1,6 +1,6 @@
 import { renderFirstLevel, renderSecondLevel, renderThirdLevel } from './gameLevel.js';
 
-let gameLevel;
+let gameLevel: string;
 export const gameEl = document.getElementById('container');
 
 const renderChooseLevel = () => {
@@ -26,29 +26,33 @@ const renderChooseLevel = () => {
     <button class="start-button">Старт</button>
     </div>`;
 
-    gameEl.innerHTML = gameHtml;
+    if (gameEl) {
+        gameEl.innerHTML = gameHtml;
+    }
 
     const startButton = document.querySelector('.start-button');
     let radios = document.querySelectorAll('.radio-button');
 
-    startButton.addEventListener('click', () => {
-        for (let index = 0; index < radios.length; index++) {
-            if (radios[index].checked) {
-                gameLevel = radios[index].value;
-                break;
+    if (startButton) {
+        startButton.addEventListener('click', () => {
+            for (let index = 0; index < radios.length; index++) {
+                if (radios[index].checked) {
+                    gameLevel = radios[index].value;
+                    break;
+                }
             }
-        }
-
-        console.log(gameLevel);
-
-        if (gameLevel === 'Первый уровень') {
-            renderFirstLevel();
-        } else if (gameLevel === 'Второй уровень') {
-            renderSecondLevel();
-        } else if (gameLevel === 'Третий уровень') {
-            renderThirdLevel();
-        }
-    });
+    
+            console.log(gameLevel);
+    
+            if (gameLevel === 'Первый уровень') {
+                renderFirstLevel();
+            } else if (gameLevel === 'Второй уровень') {
+                renderSecondLevel();
+            } else if (gameLevel === 'Третий уровень') {
+                renderThirdLevel();
+            }
+        });
+    } 
 };
 
 renderChooseLevel();
