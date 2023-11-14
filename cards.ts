@@ -181,7 +181,13 @@ const AllCards = [
     },
 ]
 
-export function getRandomCardsArray(quantityCards: number) {
+interface Card {
+    name: string;
+    srcFront: string;
+    srcBack: string;
+}
+
+export function getRandomCardsArray(quantityCards: number): Card[] {
     let sixCardsArray: Array<object> = [];
     for (let i = 0; i < quantityCards; i++) {
         while (sixCardsArray.length < quantityCards*2) {

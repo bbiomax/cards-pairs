@@ -1,4 +1,5 @@
-import { renderFirstLevel, renderSecondLevel, renderThirdLevel } from './gameLevel.js';
+import "./static/style.css";
+import { renderLevel } from './gameLevel';
 
 let gameLevel: string;
 export const gameEl = document.getElementById('container');
@@ -36,8 +37,8 @@ const renderChooseLevel = () => {
     if (startButton) {
         startButton.addEventListener('click', () => {
             for (let index = 0; index < radios.length; index++) {
-                if (radios[index].checked) {
-                    gameLevel = radios[index].value;
+                if ((radios[index] as HTMLInputElement).checked) {
+                    gameLevel = (radios[index] as HTMLInputElement).value;
                     break;
                 }
             }
@@ -45,11 +46,11 @@ const renderChooseLevel = () => {
             console.log(gameLevel);
     
             if (gameLevel === 'Первый уровень') {
-                renderFirstLevel();
+                renderLevel(3);
             } else if (gameLevel === 'Второй уровень') {
-                renderSecondLevel();
+                renderLevel(6);
             } else if (gameLevel === 'Третий уровень') {
-                renderThirdLevel();
+                renderLevel(9);
             }
         });
     } 
