@@ -28,13 +28,15 @@ export const renderLevel = (level: number) => {
 
     interface Card {
         name: string;
-        scrFront: string;
+        srcFront: string;
         srcBack: string;
     }
+
+    let randomCards = getRandomCardsArray(level);
     
-    let cardsHtml = getRandomCardsArray(level).map((card: Card) => `
+    let cardsHtml = randomCards.map((card) => `
     <div class="memory-card" data-name="${card.name}">
-        <img src="${card.scrFront}" alt="" class="front-face">
+        <img src="${card.srcFront}" alt="" class="front-face">
         <img src="${card.srcBack}" alt="" class="back-face">
     </div>`).join('');
 
@@ -48,7 +50,7 @@ export const renderLevel = (level: number) => {
     let lockBoard = false;
     let firstCard: HTMLElement | null, secondCard: HTMLElement | null;
 
-    function flipCard(this: ) {
+    function flipCard(this: HTMLElement) {
         if (lockBoard) return;
         if (this === firstCard) return;
 
@@ -117,8 +119,10 @@ export const renderLevel = (level: number) => {
 
     (function shuffle() {
         cards.forEach(card => {
-            let randomPos = Math.floor(Math.random() * 36);
-            card.style.order = randomPos;
+            if (card instanceof HTMLElement) {
+                let randomPos = Math.floor(Math.random() * 36);
+                card.style.order = randomPos.toString();
+            }
         })
     })();
 
