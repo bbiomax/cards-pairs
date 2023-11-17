@@ -1,6 +1,7 @@
-import { gameEl } from './index';
+import { gameEl, renderChooseLevel } from './index';
 import { getRandomCardsArray } from './cards';
 import { first } from 'lodash';
+// import { finalScreen } from './finalScreen';
 
 export const renderLevel = (level: number) => {
     const gameHtml = `<div class="container-level">
@@ -10,21 +11,63 @@ export const renderLevel = (level: number) => {
                 <span style="font-family: stratosskyeng;">min</span>
                 <span style="font-family: stratosskyeng;">sek</span>
             </div>
-            <div class="stopwatch-time" style="font-family: stratosskyeng;">00.00</div>
+            <div class="stopwatch" style="font-family: stratosskyeng;">
+                <span class="stopwatch_minutes">00</span>
+                <span class="stopwatch_colon">:</span>
+                <span class="stopwatch_seconds">00</span>
+            </div>
         </div>
         <button class="restart-button" style="font-family: stratosskyeng;">Начать заново</button>
     </div>
     <div class="cards-box">
-    <div class="memory-card">
-        <img src="./static/img/frontSide/club/ace.png" alt="" class="front-face">
-        <img src="./static/img/backSide/backSide.png" alt="" class="back-face">
     </div>`;
 
     if (gameEl) {
         gameEl.innerHTML = gameHtml;
     }
 
+    // stopwatch
+    const minutesBlock: HTMLElement | null = document.querySelector('.stopwatch_minutes');
+    const secondsBlock: HTMLElement | null = document.querySelector('.stopwatch_seconds');
+    let interval;
+    let minutes: number = 0;
+    let seconds: number = 0;
+
+    const startTimer = () => {
+        seconds++;
+        if (secondsBlock) {
+            secondsBlock.innerHTML = '0' + seconds;
+        }
+
+        if (seconds > 9) {
+            if (secondsBlock) {
+                secondsBlock.innerHTML = seconds.toString();
+            }
+        }
+    
+        if (seconds >= 59) {
+            minutes++;
+            if (minutesBlock) {
+                minutesBlock.innerHTML = '0' + minutes;
+            }
+    
+            seconds = 0;
+        }
+    }
+
+    clearInterval(interval);
+    interval = setInterval(startTimer, 1000);
+
+    const restartButtons = document.querySelectorAll('.restart-button');
+
+    restartButtons.forEach((restartButton) => {
+        restartButton.addEventListener('click', () => {
+            renderChooseLevel();
+        })
+    })
+
     const gameContainer = document.querySelector('.cards-box');
+    const containerLevel = document.querySelector('.container-level');
 
     interface Card {
         name: string;
@@ -69,7 +112,8 @@ export const renderLevel = (level: number) => {
         }
 
         if (Array.from(cards).every(cards => cards.className.includes('flip'))) {
-            alert('Вы выиграли!');
+            containerLevel?.classList.add('container-level-after');
+            finalScreen();
         }
     }
 
@@ -127,4 +171,30 @@ export const renderLevel = (level: number) => {
     })();
 
     cards.forEach((card) => card.addEventListener('click', flipCard));
+
+    const finalScreen = () => {
+        let minutesSpent = minutesBlock?.innerHTML;
+        let secondsSpent = secondsBlock?.innerHTML;
+        const finalGameHtml = `<div class="final-container">
+            <div class="win-lose-box">
+                <div class="win-img"></div>
+                <span class="win-lose-title" style="font-family: stratosskyeng;">Вы выиграли!</span>
+                <span class="win-lose-text" style="font-family: stratosskyeng;">Затраченное время:</span>
+                <span class="win-lose-time" style="font-family: stratosskyeng;">${minutesSpent}:${secondsSpent}</span>
+                <button class="restart-button" style="font-family: stratosskyeng;">Начать заново</button>
+            </div>
+        </div>`;
+    
+        if (gameEl) {
+            gameEl.innerHTML += finalGameHtml;
+        }
+
+        const restartButtons = document.querySelectorAll('.restart-button');
+
+        restartButtons.forEach((restartButton) => {
+            restartButton.addEventListener('click', () => {
+                renderChooseLevel();
+            })
+        })
+    };
 };

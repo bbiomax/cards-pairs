@@ -4,7 +4,7 @@ import { renderLevel } from './gameLevel';
 let gameLevel: string;
 export const gameEl = document.getElementById('container');
 
-const renderChooseLevel = () => {
+export const renderChooseLevel = () => {
     const gameHtml = `<div class="level-choose-box">
     <h2 class="level-choose-text">Выбери сложность</h2>
     <div class="levels">
