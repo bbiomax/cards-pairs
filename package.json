@@ -8,6 +8,7 @@
     "format": "prettier --write ./index.js ./style.css",
     "lint:js": "eslint ./**/*.js",
     "lint:css": "stylelint ./**/*.css",
+    "lint:ts": "tsc --noEmit",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
     "start_prod": "webpack-dev-server --open --mode production"
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/bbiomax/cards-pairs#readme",
   "devDependencies": {
+    "@types/lodash": "^4.14.200",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
@@ -35,6 +37,8 @@
     "stylelint": "^15.10.2",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-prettier": "^4.0.0",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   }

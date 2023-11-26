@@ -1,9 +1,10 @@
-import { renderFirstLevel, renderSecondLevel, renderThirdLevel } from './gameLevel.js';
+import "./static/style.css";
+import { renderLevel } from './gameLevel';
 
-let gameLevel;
+let gameLevel: string;
 export const gameEl = document.getElementById('container');
 
-const renderChooseLevel = () => {
+export const renderChooseLevel = () => {
     const gameHtml = `<div class="level-choose-box">
     <h2 class="level-choose-text">Выбери сложность</h2>
     <div class="levels">
@@ -26,29 +27,33 @@ const renderChooseLevel = () => {
     <button class="start-button">Старт</button>
     </div>`;
 
-    gameEl.innerHTML = gameHtml;
+    if (gameEl) {
+        gameEl.innerHTML = gameHtml;
+    }
 
     const startButton = document.querySelector('.start-button');
     let radios = document.querySelectorAll('.radio-button');
 
-    startButton.addEventListener('click', () => {
-        for (let index = 0; index < radios.length; index++) {
-            if (radios[index].checked) {
-                gameLevel = radios[index].value;
-                break;
+    if (startButton) {
+        startButton.addEventListener('click', () => {
+            for (let index = 0; index < radios.length; index++) {
+                if ((radios[index] as HTMLInputElement).checked) {
+                    gameLevel = (radios[index] as HTMLInputElement).value;
+                    break;
+                }
             }
-        }
-
-        console.log(gameLevel);
-
-        if (gameLevel === 'Первый уровень') {
-            renderFirstLevel();
-        } else if (gameLevel === 'Второй уровень') {
-            renderSecondLevel();
-        } else if (gameLevel === 'Третий уровень') {
-            renderThirdLevel();
-        }
-    });
+    
+            console.log(gameLevel);
+    
+            if (gameLevel === 'Первый уровень') {
+                renderLevel(3);
+            } else if (gameLevel === 'Второй уровень') {
+                renderLevel(6);
+            } else if (gameLevel === 'Третий уровень') {
+                renderLevel(9);
+            }
+        });
+    } 
 };
 
 renderChooseLevel();
