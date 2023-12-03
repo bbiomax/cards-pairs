@@ -232,6 +232,13 @@
     margin-bottom: 9px;
 }
 
+.lose-img {
+    background-image: url('./img/win-lose/lose.svg');
+    width: 96px;
+    height: 96px;
+    margin-bottom: 9px;
+}
+
 .win-lose-title {
     color: #004980;
     font-size: 40px;
