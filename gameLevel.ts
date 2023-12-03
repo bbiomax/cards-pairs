@@ -33,6 +33,9 @@ export const renderLevel = (level: number) => {
     let minutes: number = 0;
     let seconds: number = 0;
 
+    let mistakesCount: number = 0;
+    let loseOrWin: string;
+
     const startTimer = () => {
         seconds++;
         if (secondsBlock) {
@@ -113,7 +116,8 @@ export const renderLevel = (level: number) => {
 
         if (Array.from(cards).every(cards => cards.className.includes('flip'))) {
             containerLevel?.classList.add('container-level-after');
-            finalScreen();
+            loseOrWin = 'win';
+            finalScreen(loseOrWin);
         }
     }
 
@@ -129,6 +133,14 @@ export const renderLevel = (level: number) => {
                 disabledCards();
             } else {
                 // not a match
+                mistakesCount++;
+                console.log(mistakesCount);
+
+                if (mistakesCount === 3) {
+                    containerLevel?.classList.add('container-level-after');
+                    loseOrWin = 'lose';
+                    finalScreen(loseOrWin);
+                }
                 unflipCards();
             }
         }
@@ -172,21 +184,38 @@ export const renderLevel = (level: number) => {
 
     cards.forEach((card) => card.addEventListener('click', flipCard));
 
-    const finalScreen = () => {
+    const finalScreen = (loseOrWin: string) => {
         let minutesSpent = minutesBlock?.innerHTML;
         let secondsSpent = secondsBlock?.innerHTML;
-        const finalGameHtml = `<div class="final-container">
-            <div class="win-lose-box">
-                <div class="win-img"></div>
-                <span class="win-lose-title" style="font-family: stratosskyeng;">Вы выиграли!</span>
-                <span class="win-lose-text" style="font-family: stratosskyeng;">Затраченное время:</span>
-                <span class="win-lose-time" style="font-family: stratosskyeng;">${minutesSpent}:${secondsSpent}</span>
-                <button class="restart-button" style="font-family: stratosskyeng;">Начать заново</button>
-            </div>
-        </div>`;
-    
-        if (gameEl) {
-            gameEl.innerHTML += finalGameHtml;
+
+        if (loseOrWin === 'win') {
+            const finalGameHtml = `<div class="final-container">
+                <div class="win-lose-box">
+                    <div class="win-img"></div>
+                    <span class="win-lose-title" style="font-family: stratosskyeng;">Вы выиграли!</span>
+                    <span class="win-lose-text" style="font-family: stratosskyeng;">Затраченное время:</span>
+                    <span class="win-lose-time" style="font-family: stratosskyeng;">${minutesSpent}:${secondsSpent}</span>
+                    <button class="restart-button" style="font-family: stratosskyeng;">Начать заново</button>
+                </div>
+            </div>`;
+        
+            if (gameEl) {
+                gameEl.innerHTML += finalGameHtml;
+            }
+        } else {
+            const finalGameHtml = `<div class="final-container">
+                <div class="win-lose-box">
+                    <div class="lose-img"></div>
+                    <span class="win-lose-title" style="font-family: stratosskyeng;">Вы проиграли!</span>
+                    <span class="win-lose-text" style="font-family: stratosskyeng;">Затраченное время:</span>
+                    <span class="win-lose-time" style="font-family: stratosskyeng;">${minutesSpent}:${secondsSpent}</span>
+                    <button class="restart-button" style="font-family: stratosskyeng;">Начать заново</button>
+                </div>
+            </div>`;
+        
+            if (gameEl) {
+                gameEl.innerHTML += finalGameHtml;
+            }
         }
 
         const restartButtons = document.querySelectorAll('.restart-button');
