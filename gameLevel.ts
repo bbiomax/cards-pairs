@@ -1,6 +1,6 @@
 import { gameEl, renderChooseLevel } from './index';
 import { getRandomCardsArray } from './cards';
-import { first } from 'lodash';
+import { first, forEach } from 'lodash';
 // import { finalScreen } from './finalScreen';
 
 export const renderLevel = (level: number) => {
@@ -29,7 +29,7 @@ export const renderLevel = (level: number) => {
     // stopwatch
     const minutesBlock: HTMLElement | null = document.querySelector('.stopwatch_minutes');
     const secondsBlock: HTMLElement | null = document.querySelector('.stopwatch_seconds');
-    let interval;
+    let interval: NodeJS.Timeout;
     let minutes: number = 0;
     let seconds: number = 0;
 
@@ -58,8 +58,10 @@ export const renderLevel = (level: number) => {
         }
     }
 
-    clearInterval(interval);
-    interval = setInterval(startTimer, 1000);
+    setTimeout(function() {
+        clearInterval(interval);
+        interval = setInterval(startTimer, 1000);
+    }, 5000);
 
     const restartButtons = document.querySelectorAll('.restart-button');
 
@@ -182,7 +184,16 @@ export const renderLevel = (level: number) => {
         })
     })();
 
-    cards.forEach((card) => card.addEventListener('click', flipCard));
+    cards.forEach((card) => {
+        card.classList.toggle('flip');
+    })
+
+    setTimeout(function() {
+        cards.forEach((card) => {
+            card.classList.toggle('flip');
+            card.addEventListener('click', flipCard);
+        })
+    }, 5000);
 
     const finalScreen = (loseOrWin: string) => {
         let minutesSpent = minutesBlock?.innerHTML;
